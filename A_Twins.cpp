@@ -16,14 +16,14 @@ void solve()
     int n, ts = 0, s = 0;
     cin >> n;
 
-    int a[n];
+    vi a(n);
 
     rep(i,0,n)
     {
         cin >> a[i];
         ts += a[i];
     }
-    sort(a,a+n);
+    sort(a.rbegin(),a.rend());
 
     int cnt = 0;
     rep(i,0,n)
