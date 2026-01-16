@@ -28,7 +28,7 @@ void solve()
             ops = 1;
         mx = max(ops, mx);
     }
-    cout << mx << endl;
+    cout << mx << '\n';
 
 }
 
