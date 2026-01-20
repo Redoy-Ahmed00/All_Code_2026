@@ -9,18 +9,18 @@ int main() {
     cin >> s;
 
     int n = s.size();
-    bool ok = true;
+    bool flag = true;
 
     for (int i = 1; i < n; i++)
     {
         if (islower((unsigned char)s[i]))
         {
-            ok = false;
+            flag = false;
             break;
         }
     }
 
-    if (ok)
+    if (flag)
     {
         for (char &c : s)
         {
