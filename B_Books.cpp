@@ -16,20 +16,21 @@ void solve()
     ll n, t;
     cin >> n >> t;
 
-    vll v(n+1);
+    vll v(n);
 
     rep(i,0,n)
         cin >> v[i];
-    ll r = 0, passed = 0, ans = 0;
-    for(int i = 0; i < n; i++)
+
+    ll s = 0, l = 0, ans = 0;
+    rep(i,0,n)
     {
-        while(r < n && passed + v[r] <= t)
+        s+= v[i];
+        while(s > t)
         {
-            passed += v[i];
-            ++r;
+            s -= v[l];
+            l++;
         }
-        ans = max(ans, r-i);
-        passed -= v[i];
+        ans = max(ans, i-l+1);
     }
 
     cout << ans << endl;
