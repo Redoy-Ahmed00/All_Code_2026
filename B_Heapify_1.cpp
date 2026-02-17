@@ -15,26 +15,21 @@ void solve()
 {
     int n;
     cin >> n;
-
-    vector<int> v(n+1), a(n+1);
+    vi a(n + 1);
 
     for(int i = 1; i <= n; i++)
-    {
-        cin >> v[i];
-        a[i] = v[i];
-    }
-
-    sort(a.begin(),a.end());
-
-    for(int i = 1; i <= n/2; i++)
-    {
-        if(v[i] > v[2*i])
-            swap(v[i], v[2*i]);
-    }
-
+        cin>>a[i];
     
-
-    cout << ((a==v) ? "YES\n" : "NO\n");
+    for(int i = 1;i <= n; i += 2)
+        for(int j = i; j <= n; j *= 2)
+            for(int k = i * 2;k <= n; k *= 2)
+                if(a[k/2]>a[k])
+                    swap(a[k/2],a[k]); 
+    
+    if(is_sorted(begin(a),end(a)))
+        cout<<"YES\n";
+    else 
+        cout<<"NO\n";
 }
 
 
