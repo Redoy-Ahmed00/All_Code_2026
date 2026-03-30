@@ -9,31 +9,24 @@ using namespace std;
 typedef long long ll;
 typedef vector <int> vi;
 typedef vector <double> vd;
-typedef vector <bool> vb;
 typedef vector <ll> vll;
 
 void solve()
 {
-    int n, cnt = 0;
+    int n;
     cin >> n;
 
-    vi v(n+1);
-    vb m(n+1,false);
-
-    rep(i,1,n+1)
+    vi v(n);
+    rep(i,0,n)
         cin >> v[i];
-    rep(i,1,n+1)
-    {
-        if(m[i])
-            break;
-        if(v[i] <= i)
-            m[i] = true;
-    }
 
-    rep(i,1,n+1)
-        if(m[i])
-            cnt++;
-    cout << cnt << endl;
+    if(n == 1)
+        cout << 1 << endl;
+    else
+    {
+        rep(i,0,n)
+            cout  << 2 <<  ' ';
+    }
 }
 
 int main ()
