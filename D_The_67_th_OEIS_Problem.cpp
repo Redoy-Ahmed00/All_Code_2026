@@ -11,25 +11,26 @@ typedef vector <int> vi;
 typedef vector <double> vd;
 typedef vector <ll> vll;
 
+
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
 
-    vi v(n+1);
-    map<int,int> mp;
+    vll v(n+1), a(10005);
+    rep(i,0,10005)
+        a[i] = i;
+
+    v[1] = 1;
+
+    rep(i,2,n+1)
+    {
+        v[i] = a[i-1] * a[i];
+    }
 
     rep(i,1,n+1)
-    {
-        cin >> v[i];
-        int diff = v[i]-i;
-        mp[diff]++;
-    }
-    int ans = 0;
-    for(auto[x,y] : mp)
-    {
-        ans += (y*(y-1))/2;
-    }
+        cout << v[i] << " ";
+    cout << endl;
 }
 
 int main ()
@@ -37,7 +38,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();

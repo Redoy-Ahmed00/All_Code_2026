@@ -16,20 +16,7 @@ void solve()
     int n;
     cin >> n;
 
-    vi v(n+1);
-    map<int,int> mp;
-
-    rep(i,1,n+1)
-    {
-        cin >> v[i];
-        int diff = v[i]-i;
-        mp[diff]++;
-    }
-    int ans = 0;
-    for(auto[x,y] : mp)
-    {
-        ans += (y*(y-1))/2;
-    }
+    cout << n << endl;
 }
 
 int main ()
@@ -37,7 +24,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();

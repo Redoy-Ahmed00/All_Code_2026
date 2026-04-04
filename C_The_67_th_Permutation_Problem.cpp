@@ -16,20 +16,27 @@ void solve()
     int n;
     cin >> n;
 
-    vi v(n+1);
-    map<int,int> mp;
+    vi v(3*n + 1, 0);
+    int p = 3*n, t = p;
+    int j = 1;
+    rep(i,1,p+1)
+    {
+        if(i%3==0)
+        {
+            v[i] = j;
+            j++;
+        }
+        else
+        {
+            v[i] = t;
+            t--;
+        }
+        
+    }
 
-    rep(i,1,n+1)
-    {
-        cin >> v[i];
-        int diff = v[i]-i;
-        mp[diff]++;
-    }
-    int ans = 0;
-    for(auto[x,y] : mp)
-    {
-        ans += (y*(y-1))/2;
-    }
+    rep(i,1,p+1)
+        cout << v[i] << ' ';
+    cout << endl;
 }
 
 int main ()
@@ -37,7 +44,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();

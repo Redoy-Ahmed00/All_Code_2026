@@ -13,23 +13,21 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int n;
-    cin >> n;
-
-    vi v(n+1);
-    map<int,int> mp;
-
-    rep(i,1,n+1)
+    vi v(7);
+    int add = 0;
+    rep(i,0,7)
     {
         cin >> v[i];
-        int diff = v[i]-i;
-        mp[diff]++;
+        add += (v[i]*-1);
     }
-    int ans = 0;
-    for(auto[x,y] : mp)
+
+    int mx = INT_MIN;
+
+    rep(i,0,7)
     {
-        ans += (y*(y-1))/2;
+        mx = max(mx, add+(2*v[i]));
     }
+    cout << mx << endl;
 }
 
 int main ()
@@ -37,7 +35,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();
