@@ -16,32 +16,25 @@ void solve()
     int n, k;
     cin >> n >> k;
 
-    vi v(n);
+    vi v1(n+1), v2(n+1);
+    priority_queue<int> pq;
 
-    rep(i,0,n)
-        cin >> v[i];
+    rep(i,1,n+1)
+        cin >> v1[i];
+    rep(i,1,n+1)
+        cin >> v2[i];
+    
+    int r = min(n,k), vadd = 0, mx = -1;
 
-    int l = 1, r = 1e4, ans = 0;
-
-    while(l<=r)
+    rep(i,1,r+1)
     {
-        int mid = (l+r)/2;
-        int add = 0;
-        rep(i,0,n)
-            add += v[i]/mid;
-        
-        if(add >= k)
-        {
-            ans = max(ans, mid);
-            l = mid+1;
-        }
-        else
-        {
-            r = mid-1;
-        }
+        vadd += v1[i];
+        pq.push(v2[i]);
+
+        mx = max(mx, vadd+pq.top()*(k-i));
     }
 
-    cout << ans << endl;
+    cout << mx << endl;
 }
 
 int main ()
@@ -49,7 +42,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();

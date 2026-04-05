@@ -13,35 +13,29 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int n, k;
-    cin >> n >> k;
+    int n, h;
+    cin >> n >> h;
 
     vi v(n);
 
     rep(i,0,n)
         cin >> v[i];
 
-    int l = 1, r = 1e4, ans = 0;
+    sort(v.rbegin(), v.rend());
 
-    while(l<=r)
+    int ans = 0, k = 0;
+    rep(i,0,n)
     {
-        int mid = (l+r)/2;
-        int add = 0;
-        rep(i,0,n)
-            add += v[i]/mid;
-        
-        if(add >= k)
+        ans += v[i];
+
+        if(ans >= h)
         {
-            ans = max(ans, mid);
-            l = mid+1;
-        }
-        else
-        {
-            r = mid-1;
+            k = v[i];
+            break;
         }
     }
 
-    cout << ans << endl;
+    cout << k << endl;
 }
 
 int main ()
@@ -49,7 +43,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();

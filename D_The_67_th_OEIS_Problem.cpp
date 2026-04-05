@@ -8,25 +8,39 @@ using namespace std;
 
 typedef long long ll;
 typedef vector <int> vi;
+typedef vector <bool> vb;
 typedef vector <double> vd;
 typedef vector <ll> vll;
 
+const ll LIMIT  = 200000;
+vb isprime(LIMIT, true);
+vi prime;
+
+void seive ()
+{
+
+    isprime[0]=isprime[1]=false;
+
+    rep(i,2,LIMIT)
+    {
+        if(isprime[i])
+        {
+            prime.push_back(i);
+            for(ll j = 1LL*i*i; j < LIMIT; j += i)
+                isprime[j] = false;
+        }
+    }
+}
 
 void solve()
-{
-    ll n;
+{    
+    int n;
     cin >> n;
 
-    vll v(n+1), a(10005);
-    rep(i,0,10005)
-        a[i] = i;
+    vll v(n+1);
 
-    v[1] = 1;
-
-    rep(i,2,n+1)
-    {
-        v[i] = a[i-1] * a[i];
-    }
+    rep(i,1,n+1)
+        v[i] = 1LL * prime[i]*prime[i-1];
 
     rep(i,1,n+1)
         cout << v[i] << " ";
@@ -36,9 +50,12 @@ void solve()
 int main ()
 {
     optimize();
-              
+
+    seive();              
     int t = 1;
     cin >> t;
+
+
 
     while(t--)
         solve();
