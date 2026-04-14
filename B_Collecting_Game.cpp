@@ -22,19 +22,39 @@ void solve()
         tmp[i] = v[i];
     }
     sort(tmp.begin(),tmp.end());
+
     ps[0] = tmp[0];
     rep(i,1,n)
         ps[i] = ps[i-1]+tmp[i];
 
-    
+    ahead[n-1]=0;
+    rep(i,0,n-1)
+    {
+        if(ps[i]>=tmp[i+1])
+            ahead[i]=1;
+        else
+            ahead[i]=0;
+    }
+
+    vi psa(n);
+    int p = 0;
+    for(int i = n-1; i >= 0; i--)
+    {
+        if(ahead[i] == 1)
+            p++;
+        else
+            p=0;
+        psa[i] = p;
+    }
+
+
     rep(i,0,n)
     {
         int idx = (lower_bound(tmp.begin(), tmp.end(), v[i])) - tmp.begin();
 
-        while(idx + 1 < n && ps[idx] >= tmp[idx+1])
-            idx++;
+        ll cidx = psa[idx];
 
-        ans[i] = idx;
+        ans[i] = idx + cidx;
     }
 
     for(auto x: ans)
