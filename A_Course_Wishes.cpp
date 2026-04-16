@@ -13,15 +13,41 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int n,k;
+    ll n , k;
     cin >> n >> k;
-    vi a(k+1), b(n+1),ans;
 
-    rep(i,1,k+1)
+    vll a(k, 0);
+    rep(i,0,k)
         cin >> a[i];
 
-    rep(i,1,n+1)
-        cin >> b[i];
+    vector<pair<ll,ll>> pr(n);
+    rep(i,0,n)
+    {
+        int b;
+        cin >> b;
+        pr[i] = {b, i};   
+    }
+
+    sort(pr.rbegin(),pr.rend());
+    vll ans;
+    for(int j = 0; j < n; j++)
+    {
+        ll b = pr[j].first;
+        ll i = pr[j].second;
+        for(;b<k+1;b++)
+            ans.push_back(i);
+    }
+
+    int s = ans.size();
+    if(ans.size()>1000)
+        cout << -1 << endl;
+    else
+    {
+        cout << ans.size() << endl;
+        for(auto &x : ans)
+            cout << x+1 << ' ';
+        cout << endl; 
+    }
 }
 
 int main ()
