@@ -13,8 +13,30 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int;
-    cin >> p >> q;
+    int n;cin >> n;
+    vi v(n);
+    rep(i,0,n)
+        cin >> v[i];
+
+    int sum = v[0], ans = v[0];
+    rep(i,1,n)
+    {
+        if((abs(v[i]) % 2 == abs(v[i-1]) % 2))
+        {
+            sum = v[i];
+        }
+        else
+            sum += v[i];
+        
+        if(v[i] > sum)
+        {
+            sum = v[i];
+        }
+        
+        
+        ans = max(ans, sum);
+    }
+    cout << ans << nl;
 }
 
 int main ()
