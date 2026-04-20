@@ -13,8 +13,22 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int;
+    ll p, q;;
     cin >> p >> q;
+
+    ll mxn = sqrt(p+q);
+
+    rep(n,1,mxn+1)
+    {
+        ll m = (p+2*q-n)/(2*n+1);
+        if((p+2*q-n)%(2*n+1))
+            continue;
+        if(p<(m-n))
+            continue;
+        cout << n << ' ' << m << endl;
+        return;
+    }
+    cout << -1 << endl;
 }
 
 int main ()
