@@ -13,31 +13,27 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int n, rem, sum = 0;
+    int n;
     cin >> n;
-    vi v(n);
-
+    vi a(n);
     rep(i,0,n)
-    {
-        cin >> v[i];
-        sum += v[i];
-    }
-    sort(v.begin(),v.end());
+        cin >> a[i];
     
-
-    rem = n;
-    
-    for(int i = 0; i < n; i++)
+    bool is = true;
+    int mn = a[n-1]-a[0];
+    rep(i,1,n)
     {
-        if(v[i]*rem<sum)
+        if(a[i]<a[i-1])
         {
-            sum -= v[i];
-            --rem;
+            is = false;
+            break;
         }
-        if (rem == 1) break;
+        mn = min(mn,a[i]-a[i-1]);
     }
-    
-    cout << rem << nl;
+    if(!is)
+        cout << 0 << nl;
+    else
+        cout << (mn/2)+1 << nl;
 }
 
 int main ()

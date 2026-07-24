@@ -13,19 +13,33 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    ll a, b, n;
-    cin >> a >> b >> n ;
+    ll n, zc = 0;
+    cin >> n;
     vll v(n);
-    rep(i,0,n)
+    rep(i,0,n)             
     {
-        cin >> v[i];
-        if(v[i] >= a)   
-            v[i] = a-1;
+        cin >>v[i];
+        if(v[i] == 0)   zc++;
     }
-    ll mx = accumulate(v.begin(),v.end(), 0ll);
 
-    cout << mx +b << nl; 
+    int i = 0, par = 0; 
+    while(i < n)
+    {
+        if(v[i]!=0)
+        {
+            par++;
+            while(i < n && v[i]!=0)
+                i++;
+        }
+        else 
+            i++;
+    }
+    if(par > 2)
+        cout << 2 << nl;
+    else
+        cout << par << nl;
 }
+
 
 int main ()
 {

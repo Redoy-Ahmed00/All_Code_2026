@@ -13,24 +13,21 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
-    
-    deque<int> pq;
-    rep(i,0,n)
+
+    if(n < 4 || n%2)
+        cout << -1 << nl;
+    else
     {
-        int a;
-        cin >> a;
-        if(a == 0)
-            pq.push_front(a);
+        ll f = n/4;
+        ll s = (n+5)/6;
+
+        if(s>f)
+            cout << -1 << nl;
         else
-            pq.push_back(a);
+            cout << s << ' '  << f << nl;
     }
-    
-    
-    for(auto x:pq)
-        cout << x << ' ';
-    cout << nl;
 }
 
 int main ()

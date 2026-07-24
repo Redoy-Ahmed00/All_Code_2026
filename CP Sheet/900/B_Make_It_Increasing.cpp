@@ -15,11 +15,26 @@ void solve()
 {
     int n;
     cin >> n;
+    vi v(n);
+    rep(i,0,n)
+        cin >> v[i];
 
-    if(n < 3)
-        cout << "No" << nl;
-    else
-        cout << "Yes" << nl;
+    int ops = 0;
+    for(int i = n - 2; i >= 0; i--)
+    {
+        while(v[i] >= v[i + 1] && v[i] > 0)   
+        {
+            ops++;
+            v[i] /= 2;
+        }     
+        if(v[i] == v[i+1])
+        {
+            cout << -1 << '\n';
+            return;
+        }
+    }
+    cout << ops << nl;
+    
 }
 
 int main ()
@@ -27,7 +42,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();
