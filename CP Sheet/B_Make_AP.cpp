@@ -13,9 +13,26 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    
+    ll a, b, c;
+    cin >> a >> b >> c;
+
+    if((2*b-c)%a==0 && (2*b-c)/a > 0)
+    {
+        cout << "YES" << nl;
+        return;
+    }
+    if((c+a)%(2*b)==0 && (c+a)/(2*b) > 0)
+    {
+        cout << "YES" << nl;
+        return;
+    }
+    if((2*b-a)%c==0 && (2*b-a)/c > 0)
+    {
+        cout << "YES" << nl;
+        return;
+    }
+    cout << "NO" << nl;
+
 }
 
 int main ()
