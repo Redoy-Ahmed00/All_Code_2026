@@ -13,7 +13,8 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    
+    string s;
+    cin >> s;
 }
 
 int main ()
@@ -21,7 +22,7 @@ int main ()
     optimize();
               
     int t = 1;
-    //cin >> t;
+    cin >> t;
 
     while(t--)
         solve();
