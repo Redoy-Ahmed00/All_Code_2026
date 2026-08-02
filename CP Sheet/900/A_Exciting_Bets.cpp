@@ -13,8 +13,20 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    string s;
-    cin >> s;
+    ll a, b;
+    cin >> a >> b;
+
+    if(a==b)
+    {
+        cout << 0 << ' ' << 0 << nl;
+        return;
+    }
+
+    ll x = abs(b-a);
+    ll y = min(a%x, x-(a%x));
+
+    cout << x << ' ' << y << nl;    
+    
 }
 
 int main ()
