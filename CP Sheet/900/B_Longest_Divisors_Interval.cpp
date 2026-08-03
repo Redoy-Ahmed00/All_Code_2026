@@ -13,7 +13,15 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    
+    ll n;
+    cin >> n;
+    ll i = 1, ops = 0;
+    while(n%i==0)
+    {
+        ops++;
+        i++;
+    }
+    cout << ops << nl;
 }
 
 int main ()
