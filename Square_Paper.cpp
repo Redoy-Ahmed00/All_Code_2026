@@ -13,7 +13,9 @@ typedef vector <ll> vll;
 
 void solve()
 {
-    
+    int a, b;
+    cin >> a >> b;
+    cout << pow(min(a,b), 2);
 }
 
 int main ()
@@ -21,7 +23,7 @@ int main ()
     optimize();
               
     int t = 1;
-    cin >> t;
+    //cin >> t;
 
     while(t--)
         solve();

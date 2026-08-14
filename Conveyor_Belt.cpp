@@ -13,7 +13,22 @@ typedef vector <ll> vll;
 
 void solve()
 {
+    int n, p;
+    cin >> n >> p;
+    string s;
+    cin >> s;
     
+    int l = 0, r  = 0;
+    
+    rep(i,0,p)
+        if(s[i]=='R')
+            l++;
+    rep(i,p-1,n)
+        if(s[i] == 'L')
+            r++;
+    
+    int ops = min(l,r);
+    cout << ops << nl;
 }
 
 int main ()
