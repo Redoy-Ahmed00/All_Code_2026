@@ -11,35 +11,30 @@ typedef vector <int> vi;
 typedef vector <double> vd;
 typedef vector <ll> vll;
 
+bool isPrime(int n)
+{
+    if (n <= 1)
+        return false;
+    if (n == 2)
+        return true;
+    if (n % 2 == 0)
+        return false;
+
+    for (int i = 3; i * i <= n; i += 2)
+        if (n % i == 0)
+            return false;
+    
+    return true;
+}
+
 void solve()
 {
     int n;
     cin >> n;
-    
-    string s;
-    cin >> s;
-
-    vector<string> v;
-
-    // int oc = count(s.begin(),s.end(), '1');
-    // int zc = count(s.begin(),s.end(), '0');
-
-    for(int i = 0; i < n-1; i++)
-    {
-        if(s[i] != s[i+1])
-        {
-            v.push_back(s.substr(0,i+1));
-            v.push_back(s.substr(i+1,n-i));
-        }
-    }
-
-    for(auto x : v)
-        cout << x << nl;
-
-    cout << nl;
-    cout << nl;
-
-
+    if(isPrime(n+1))
+        cout << "YES" << nl;
+    else
+        cout << "NO" << nl;
 
 }
 
